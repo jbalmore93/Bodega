@@ -1,0 +1,32 @@
+<section>
+
+    <div class="d-flex justify-content-between m-2">
+      <h4>Lista de Productos</h4>
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bxs-file-plus'></i></button>
+    </div>
+<app-create></app-create>
+    <table class="table table-success">
+      <thead>
+      <tr class="text-center">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+        <ng-template #notregistered>
+          <p>nadie registrado</p>
+      </ng-template>
+         <tr class="text-center" *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td><a href="#" [routerLink]="['/producto/', 'edit', producto.id  ]" class="btn btn-outline-primary"><i class='bx bx-edit'></i></a></td>
+        <td><button type="button" (click)="deleteProducto(producto.id)" class="btn btn-outline-danger"><i class='bx bxs-message-x' ></i></button></td>
+      </tr>
+      </tbody>
+    </table>
+ </section>
